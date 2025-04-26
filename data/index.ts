@@ -7,7 +7,7 @@ import ensembleReact from "@/public/projects-imgs/ensemble-react.webp";
 const data = {
   home: {
     name: "Anser Waseem",
-    description: "I Fix, Optimize & Build #Next_js & #React Apps",
+    description: "I Fix, Optimize & Build #Next_js, #React & #Nodejs Apps",
     cvLink: "#contact",
   },
   sidebar: {
@@ -128,6 +128,12 @@ const data = {
         name: "postgresql",
         src: "/skills/postgresql.svg",
         link: "https://en.wikipedia.org/wiki/PostgreSQL",
+      },
+      {
+        id: 12,
+        name: "nodejs",
+        src: "/skills/nodejs.svg",
+        link: "https://en.wikipedia.org/wiki/Node.js",
       },
       {
         id: 13,

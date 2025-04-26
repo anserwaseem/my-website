@@ -1,4 +1,5 @@
 "use client";
+import useHash from "@/hooks/use-hash";
 import { cn } from "@/lib/utils";
 import { File, Home, LucideSend, User } from "lucide-react";
 import Link from "next/link";
@@ -34,6 +35,8 @@ const navItems = [
 ];
 
 export default function Header() {
+  const { hash } = useHash();
+
   return (
     <div className="w-full h-12 border-b bg-muted flex items-center">
       <div className="w-14 flex items-center justify-center flex-shrink-0 font-bold">
@@ -47,7 +50,8 @@ export default function Header() {
       </div>
       <div className="flex items-center size-full">
         {navItems.map((item) => {
-          const isActive = item.path === "#home";
+          const isActive =
+            item.path === hash || (item.path === "#home" && hash === "");
           return (
             <Link
               key={item.id}
