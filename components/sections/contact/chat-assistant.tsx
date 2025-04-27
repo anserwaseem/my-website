@@ -7,7 +7,7 @@ import type { ChatMessage } from "@/shared/types";
 import { MESSAGE_HISTORY_LIMIT } from "@/shared/constants";
 
 type Message = {
-  timestamp: Date;
+  timestamp: string;
 } & ChatMessage;
 
 type QuickOption = {
@@ -43,37 +43,56 @@ const QUICK_OPTIONS: QuickOption[] = [
   },
 ];
 
-export default function ChatAssistant() {
-  const [remainingMessages, setRemainingMessages] = useState(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem(RATE_LIMIT_KEY);
-      if (stored) {
-        const { count, timestamp } = JSON.parse(stored);
-        if (Date.now() - timestamp > 3600000) {
-          return MAX_MESSAGES_PER_HOUR;
-        }
-        return count;
-      }
-    }
-    return MAX_MESSAGES_PER_HOUR;
-  });
+const INITIAL_MESSAGE: Message = {
+  role: "assistant",
+  content:
+    "Hi! I'm Anser's AI assistant. I can help you learn more about his skills, experience, or how he can help with your project. What would you like to know?",
+  timestamp: "",
+};
 
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content:
-        "Hi! I'm Anser's AI assistant. I can help you learn more about his skills, experience, or how he can help with your project. What would you like to know?",
-      timestamp: new Date(),
-    },
-  ]);
+export default function ChatAssistant() {
+  const [remainingMessages, setRemainingMessages] = useState(
+    MAX_MESSAGES_PER_HOUR,
+  );
+  const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [confirmClear, setConfirmClear] = useState<ConfirmClearState>({
     show: false,
   });
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
+    setMessages([
+      {
+        ...INITIAL_MESSAGE,
+        timestamp: new Date().toISOString(),
+      },
+    ]);
+
+    const stored = localStorage.getItem(RATE_LIMIT_KEY);
+    if (stored) {
+      try {
+        const { count, timestamp } = JSON.parse(stored);
+        const now = Date.now();
+        if (now - timestamp > 3600000) {
+          setRemainingMessages(MAX_MESSAGES_PER_HOUR);
+        } else {
+          setRemainingMessages(count);
+        }
+      } catch (error) {
+        console.error("Error parsing rate limit data:", error);
+        setRemainingMessages(MAX_MESSAGES_PER_HOUR);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     if (remainingMessages < MAX_MESSAGES_PER_HOUR) {
       localStorage.setItem(
         RATE_LIMIT_KEY,
@@ -83,7 +102,7 @@ export default function ChatAssistant() {
         }),
       );
     }
-  }, [remainingMessages]);
+  }, [remainingMessages, isClient]);
 
   const debouncedApiCall = useCallback((chatMessages: ChatMessage[]) => {
     const apiCall = async () => {
@@ -113,7 +132,7 @@ export default function ChatAssistant() {
           {
             role: "assistant" as const,
             content: content,
-            timestamp: new Date(),
+            timestamp: new Date().toISOString(),
           },
         ]);
       } catch (error) {
@@ -124,7 +143,7 @@ export default function ChatAssistant() {
             role: "assistant" as const,
             content:
               "I apologize, but I'm having trouble connecting right now. Please try again or use the contact form.",
-            timestamp: new Date(),
+            timestamp: new Date().toISOString(),
           },
         ]);
       } finally {
@@ -136,8 +155,7 @@ export default function ChatAssistant() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
-    if (isTyping) return;
+    if (isTyping || !input.trim() || !isClient) return;
 
     if (remainingMessages <= 0) {
       setMessages((prev) => [
@@ -146,7 +164,7 @@ export default function ChatAssistant() {
           role: "assistant",
           content:
             "You've reached the maximum number of messages for now. Please try again later or use the contact form.",
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
         },
       ]);
       return;
@@ -159,7 +177,7 @@ export default function ChatAssistant() {
           role: "assistant",
           content:
             "I've enjoyed our chat! For more detailed discussions, please use the contact form or reach out directly via email.",
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
         },
       ]);
       return;
@@ -168,7 +186,7 @@ export default function ChatAssistant() {
     const userMessage: Message = {
       role: "user",
       content: input.trim(),
-      timestamp: new Date(),
+      timestamp: new Date().toISOString(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -187,7 +205,8 @@ export default function ChatAssistant() {
   };
 
   const handleQuickOptionClick = (option: QuickOption) => {
-    if (isTyping || remainingMessages <= 0) return;
+    if (isTyping || remainingMessages <= 0 || !isClient) return;
+
     setInput(option.message);
     handleSubmit(
       new Event("submit") as unknown as React.FormEvent<HTMLFormElement>,
@@ -195,13 +214,15 @@ export default function ChatAssistant() {
   };
 
   const handleClearClick = () => {
+    if (!isClient) return;
+
     if (confirmClear.show) {
       setMessages([
         {
           role: "assistant",
           content:
             "Hi! I'm Anser's AI assistant. I can help you learn more about his skills, experience, or how he can help with your project. What would you like to know?",
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
         },
       ]);
       setConfirmClear({ show: false });
@@ -241,6 +262,7 @@ export default function ChatAssistant() {
           }`}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          disabled={!isClient}
         >
           {confirmClear.show ? (
             <>
@@ -311,7 +333,7 @@ export default function ChatAssistant() {
                 {msg.content}
               </ReactMarkdown>
 
-              {i === 0 && messages.length === 1 && (
+              {i === 0 && messages.length === 1 && isClient && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -357,11 +379,11 @@ export default function ChatAssistant() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask me anything..."
             className="flex-1 bg-background rounded-lg px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-primary/50"
-            disabled={isTyping}
+            disabled={!isClient || isTyping}
           />
           <button
             type="submit"
-            disabled={isTyping || !input.trim()}
+            disabled={!isClient || isTyping || !input.trim()}
             className="p-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Send size={20} />
