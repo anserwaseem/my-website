@@ -14,7 +14,7 @@ import { AIExpertise } from '@/skills';
 function createAmazingWebApp() {
   const mySkills = {
     webDev: ["Next.js", "React.js", "Node.js", "TS"],
-    aiTools: ["ChatGPT"],
+    aiTools: ["ChatGPT", "Gemini"],
     passion: "Building web apps"
   };
 
@@ -37,19 +37,24 @@ export default function CodeTyping() {
     if (currentLine >= lines.length) return;
 
     const currentText = lines[currentLine];
-    const timeout = setTimeout(() => {
-      if (cursorPosition < currentText.length) {
-        setDisplayedLines((prev) =>
-          prev.map((line, i) =>
-            i === currentLine ? currentText.slice(0, cursorPosition + 1) : line,
-          ),
-        );
-        setCursorPosition(cursorPosition + 1);
-      } else {
-        setCurrentLine(currentLine + 1);
-        setCursorPosition(0);
-      }
-    }, Math.random() * 50 + 30);
+    const timeout = setTimeout(
+      () => {
+        if (cursorPosition < currentText.length) {
+          setDisplayedLines((prev) =>
+            prev.map((line, i) =>
+              i === currentLine
+                ? currentText.slice(0, cursorPosition + 1)
+                : line,
+            ),
+          );
+          setCursorPosition(cursorPosition + 1);
+        } else {
+          setCurrentLine(currentLine + 1);
+          setCursorPosition(0);
+        }
+      },
+      Math.random() * 50 + 30,
+    );
 
     return () => clearTimeout(timeout);
   }, [currentLine, cursorPosition, lines]);

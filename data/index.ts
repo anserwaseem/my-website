@@ -8,7 +8,7 @@ import anserwaseem from "@/public/imgs/anserwaseem.webp";
 const data = {
   home: {
     name: "Anser Waseem",
-    description: "I Fix, Optimize & Build #Next_js, #React & #Nodejs Apps",
+    description: "I Fix, Optimize & Build #NextJs, #ReactJs & #NodeJs Apps",
     cvLink: "#contact",
   },
   links: [
@@ -44,7 +44,7 @@ const data = {
       id: 3,
       title: "Ensemble React",
       description:
-        "Working on Ensemble React for 1.5 years, developing a modular toolkit to integrate low-code, declarative apps into React ecosystems. \n\n Technologies Used: Next.js, React.js, TypeScript, Turborepo, pnpm.",
+        "Working on Ensemble React for 1.5+ years, developing a modular toolkit to integrate low-code, declarative apps into React ecosystems. \n\n Technologies Used: React.js, TypeScript, Firebase, Turborepo, pnpm.",
       image: ensembleReact,
       previewLink: "https://github.com/EnsembleUI/ensemble-react",
     },
