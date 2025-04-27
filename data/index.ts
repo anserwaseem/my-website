@@ -56,7 +56,7 @@ const data = {
         title: "Personal Portfolio Website",
         description:
           "A reliable and polished website to showcase my skills and impress potential clients or employers. \n\n Technologies Used: Next.js, React.js, Tailwind CSS.",
-        image: null, // TODO: add image
+        image: easyAccounting, // TODO: replace with portfolio image
         previewLink: "https://anserwaseem.com",
       },
     ],

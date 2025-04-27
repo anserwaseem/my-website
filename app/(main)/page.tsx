@@ -1,6 +1,9 @@
 import LoadingScreen from "@/components/loading-screen";
 import HomeSection from "@/components/sections/home";
 import AboutSection from "@/components/sections/about";
+import ProjectsSection from "@/components/sections/projects";
+import Technologies from "@/components/sections/technologies";
+import ContactSection from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -8,6 +11,9 @@ export default function Home() {
       <LoadingScreen />
       <HomeSection />
       <AboutSection />
+      <ProjectsSection />
+      <Technologies />
+      <ContactSection />
     </>
   );
 }
