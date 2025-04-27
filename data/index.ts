@@ -132,7 +132,7 @@ const data = {
       {
         id: 12,
         name: "nodejs",
-        src: "/skills/nodejs.svg",
+        src: "/skills/nodeJS.svg",
         link: "https://en.wikipedia.org/wiki/Node.js",
       },
       {
