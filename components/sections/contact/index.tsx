@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import useCurSection from "@/hooks/use-cur-section";
 import Image from "next/image";
 import logo from "@/public/imgs/logo.svg";
+import ChatAssistant from "./chat-assistant";
 import { ContactForm } from "./contact-form";
 
 export default function ContactSection() {
@@ -29,6 +30,9 @@ export default function ContactSection() {
         <span className="text-gradient-primary">{" }"}</span>
       </h1>
       <div className="flex items-center gap-6 flex-col lg:flex-row justify-around w-full h-full">
+        <div className="flex flex-col items-center gap-2 text-center min-w-[320px] w-full max-w-[450px]">
+          <ChatAssistant />
+        </div>
         <motion.div
           layout
           className="max-w-[450px] w-full min-w-[320px] h-[500px] rounded-2xl bg-muted border overflow-hidden"

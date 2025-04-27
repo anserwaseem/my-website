@@ -21,8 +21,8 @@ Message: ${message}
     });
 
     return NextResponse.json(emailData);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
+    console.error("Chat API Error:", error);
     return NextResponse.json(
       { error: "Failed to send email" },
       { status: 500 },

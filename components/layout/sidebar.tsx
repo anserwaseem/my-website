@@ -16,7 +16,7 @@ export default function Sidebar() {
         <BorderActive /> <Info />
       </Link>
       <div>
-        {data.sidebar.links.map(
+        {data.links.map(
           (link) =>
             link.link && (
               <Link
