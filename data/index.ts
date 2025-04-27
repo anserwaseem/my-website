@@ -3,6 +3,7 @@ import { Github, Linkedin } from "lucide-react";
 import automadeasy from "@/public/projects-imgs/automadeasy.webp";
 import easyAccounting from "@/public/projects-imgs/easy-accounting.webp";
 import ensembleReact from "@/public/projects-imgs/ensemble-react.webp";
+import anserwaseem from "@/public/imgs/anserwaseem.webp";
 
 const data = {
   home: {
@@ -52,7 +53,7 @@ const data = {
       title: "Personal Portfolio Website",
       description:
         "A reliable and polished website to showcase my skills and impress potential clients or employers. \n\n Technologies Used: Next.js, React.js, Tailwind CSS.",
-      image: easyAccounting, // TODO: replace with portfolio image
+      image: anserwaseem,
       previewLink: "https://anserwaseem.com",
     },
   ],

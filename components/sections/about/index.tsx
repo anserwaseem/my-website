@@ -3,7 +3,7 @@ import useCurSection from "@/hooks/use-cur-section";
 import Image from "next/image";
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import anserwaseem from "@/public/imgs/anserwaseem_mini.webp";
+import picture from "@/public/imgs/picture.webp";
 
 export default function AboutSection() {
   const ref = useRef(null);
@@ -39,7 +39,7 @@ export default function AboutSection() {
               width={600}
               height={600}
               alt="about profile image"
-              src={anserwaseem}
+              src={picture}
             />
           </motion.div>
         </div>
