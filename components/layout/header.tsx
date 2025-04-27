@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { File, Home, LucideSend, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/imgs/logo.svg";
+import logo_mini from "@/public/imgs/logo_mini.svg";
 
 const navItems = [
   {
@@ -41,10 +41,10 @@ export default function Header() {
     <div className="w-full h-12 border-b bg-muted flex items-center">
       <div className="w-14 flex items-center justify-center flex-shrink-0 font-bold">
         <Image
-          src={logo}
-          alt="AK Logo"
-          width={24}
-          height={24}
+          src={logo_mini}
+          alt="AW Logo"
+          width={48}
+          height={48}
           className="object-contain"
         />
       </div>
