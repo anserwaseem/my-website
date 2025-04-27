@@ -1,6 +1,13 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Sidebar from "@/components/layout/sidebar";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import LinesNumber from "@/components/layout/lines-numbers";
+import Terminal from "@/components/layout/terminal";
 
 export default function MainLayout({
   children,
@@ -13,7 +20,28 @@ export default function MainLayout({
       <div className="flex size-full">
         <Sidebar />
 
-        <div>{children}</div>
+        <ResizablePanelGroup direction="vertical" className="size-full">
+          <ResizablePanel defaultSize={91}>
+            <div className="size-full flex overflow-hidden">
+              <LinesNumber />
+              <div
+                id="scroll"
+                className="size-full overflow-y-auto overflow-x-hidden scroll-smooth"
+              >
+                {children}
+              </div>
+            </div>
+          </ResizablePanel>
+          <ResizableHandle className="hidden sm:block" withHandle />
+          <ResizablePanel
+            className="hidden sm:block"
+            defaultSize={9}
+            minSize={4}
+            maxSize={25}
+          >
+            <Terminal />
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </div>
       <Footer />
     </div>
