@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import useCurSection from "@/hooks/use-cur-section";
 import Image from "next/image";
 import logo from "@/public/imgs/logo.svg";
+import { ContactForm } from "./contact-form";
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -42,6 +43,10 @@ export default function ContactSection() {
               <span className="block rounded-full size-3 bg-yellow-500" />
               <span className="block rounded-full size-3 bg-red-500 " />
             </div>
+          </div>
+
+          <div className="p-6">
+            <ContactForm />
           </div>
         </motion.div>
       </div>
