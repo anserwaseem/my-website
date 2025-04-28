@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <head />
       <body className={`${firaCode.className} ${firaCode.variable}`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
