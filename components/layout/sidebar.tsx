@@ -26,6 +26,7 @@ export default function Sidebar() {
                 className={cn(
                   "relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background mt-auto",
                 )}
+                aria-label={link.name}
               >
                 <link.icon />
               </Link>
