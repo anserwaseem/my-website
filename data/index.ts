@@ -4,6 +4,7 @@ import automadeasy from "@/public/projects-imgs/automadeasy.webp";
 import easyAccounting from "@/public/projects-imgs/easy-accounting.webp";
 import ensembleReact from "@/public/projects-imgs/ensemble-react.webp";
 import anserwaseem from "@/public/imgs/anserwaseem.webp";
+import princessDragonSlayer from "@/public/projects-imgs/princess-dragon-slayer.webp";
 
 const data = {
   home: {
@@ -42,6 +43,14 @@ const data = {
     },
     {
       id: 3,
+      title: "Princess Dragon Slayer",
+      description:
+        "A 2D platformer game built game built using the Godot Engine. The game includes features like character movement, collision detection, coin collection, and scoring. \n\n Technologies Used: Godot Engine, GDScript, Brackeys Platformer Bundle.",
+      image: princessDragonSlayer,
+      previewLink: "https://github.com/anserwaseem/princess-dragon-slayer",
+    },
+    {
+      id: 4,
       title: "Ensemble React",
       description:
         "Working on Ensemble React for 1.5+ years, developing a modular toolkit to integrate low-code, declarative apps into React ecosystems. \n\n Technologies Used: React.js, TypeScript, Firebase, Turborepo, pnpm.",
@@ -49,7 +58,7 @@ const data = {
       previewLink: "https://github.com/EnsembleUI/ensemble-react",
     },
     {
-      id: 4,
+      id: 5,
       title: "Personal Portfolio Website",
       description:
         "A reliable and polished website to showcase my skills and impress potential clients or employers. \n\n Technologies Used: Next.js, React.js, Tailwind CSS.",
