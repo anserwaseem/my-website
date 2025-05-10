@@ -1,6 +1,8 @@
+"use client";
+
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Send, Bot, User, Trash2, AlertCircle } from "lucide-react";
+import { Send, Bot, User, Trash2, AlertCircle, X } from "lucide-react";
 import { debounce } from "lodash";
 import ReactMarkdown from "react-markdown";
 import type { ChatMessage } from "@/shared/types";
@@ -18,6 +20,10 @@ type QuickOption = {
 type ConfirmClearState = {
   show: boolean;
   timeoutId?: NodeJS.Timeout;
+};
+
+type ChatAssistantProps = {
+  onClose?: () => void;
 };
 
 const RATE_LIMIT_KEY = "chatRateLimit";
@@ -50,7 +56,7 @@ const INITIAL_MESSAGE: Message = {
   timestamp: "",
 };
 
-export default function ChatAssistant() {
+const ChatAssistant: React.FC<ChatAssistantProps> = ({ onClose }) => {
   const [remainingMessages, setRemainingMessages] = useState(
     MAX_MESSAGES_PER_HOUR,
   );
@@ -246,33 +252,44 @@ export default function ChatAssistant() {
   }, [confirmClear.timeoutId]);
 
   return (
-    <div className="flex flex-col h-[500px] max-h-[500px] bg-muted border rounded-2xl overflow-hidden">
+    <div className="flex flex-col h-full bg-muted border rounded-2xl overflow-hidden">
       <div className="flex justify-between items-center px-4 py-2 border-b bg-muted">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Bot size={18} />
           <span>AI Assistant</span>
         </div>
 
-        <motion.button
-          onClick={handleClearClick}
-          className={`flex items-center gap-2 px-2 py-1 rounded-md transition-colors ${
-            confirmClear.show
-              ? "bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              : "hover:bg-background/80"
-          }`}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          disabled={!isClient}
-        >
-          {confirmClear.show ? (
-            <>
-              <AlertCircle size={16} />
-              <span className="text-sm">Confirm clear?</span>
-            </>
-          ) : (
-            <Trash2 size={16} className="text-muted-foreground" />
+        <div className="flex items-center gap-2">
+          <motion.button
+            onClick={handleClearClick}
+            className={`flex items-center gap-2 px-2 py-1 rounded-md transition-colors ${
+              confirmClear.show
+                ? "bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                : "hover:bg-background/80"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            disabled={!isClient}
+          >
+            {confirmClear.show ? (
+              <>
+                <AlertCircle size={16} />
+                <span className="text-sm">Confirm clear?</span>
+              </>
+            ) : (
+              <Trash2 size={16} className="text-muted-foreground" />
+            )}
+          </motion.button>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-background/80 transition-colors"
+              aria-label="Close chat"
+            >
+              <X size={18} className="text-muted-foreground" />
+            </button>
           )}
-        </motion.button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent text-sm">
@@ -392,4 +409,6 @@ export default function ChatAssistant() {
       </div>
     </div>
   );
-}
+};
+
+export default ChatAssistant;

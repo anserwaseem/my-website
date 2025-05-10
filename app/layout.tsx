@@ -3,6 +3,7 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { WebVitals } from "@/components/web-vitals";
+import FloatingChat from "@/components/ui/floating-chat";
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <WebVitals />
+        <FloatingChat />
       </body>
     </html>
   );
