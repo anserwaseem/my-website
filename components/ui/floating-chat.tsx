@@ -44,12 +44,14 @@ const FloatingChat: FC<FloatingChatProps> = ({ initiallyOpen = false }) => {
               transition={{ duration: 0.2 }}
               className={`fixed ${
                 isMobile
-                  ? "inset-4 z-50"
+                  ? "inset-4 z-50 max-h-[92dvh]"
                   : "bottom-4 right-4 z-50 w-[400px] shadow-2xl"
               }`}
             >
               <div
-                className={`${isMobile ? "h-[calc(100vh-32px)]" : "h-[600px]"} relative bg-muted rounded-2xl overflow-hidden`}
+                className={`${
+                  isMobile ? "h-full" : "h-[600px]"
+                } relative bg-muted border rounded-2xl overflow-hidden`}
               >
                 <ChatAssistant onClose={() => setIsOpen(false)} />
               </div>
