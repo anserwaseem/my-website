@@ -5,6 +5,7 @@ import easyAccounting from "@/public/projects-imgs/easy-accounting.webp";
 import ensembleReact from "@/public/projects-imgs/ensemble-react.webp";
 import anserwaseem from "@/public/imgs/anserwaseem.webp";
 import princessDragonSlayer from "@/public/projects-imgs/princess-dragon-slayer.webp";
+import urlToMetadata from "@/public/projects-imgs/url-to-metadata.webp";
 
 const data = {
   home: {
@@ -26,127 +27,116 @@ const data = {
   ],
   projects: [
     {
-      id: 1,
       title: "Easy Accounting",
       description:
-        "Offline first accounting system (desktop app), helping SMEs to manage their finances.\n\n Technologies Used: Electron.js, React.js, SQLite, Shadcn UI, Tailwind CSS.",
+        "Offline first accounting system (desktop app), helping SMEs to manage their finances.\n\n Tech: Electron.js, React.js, SQLite, Shadcn UI, Tailwind.",
       image: easyAccounting,
       previewLink: "https://github.com/anserwaseem/easy-accounting/",
     },
     {
-      id: 2,
       title: "Automadeasy",
       description:
-        "An interactive tool for visual automaton design, analysis, and transformation, built to make learning and teaching Theory of Automata easier. \n\n Technologies Used: React.js, TypeScript, CSS.",
+        "An interactive tool for visual automaton design, analysis, and transformation, built to make learning and teaching Theory of Automata easier. \n\n Tech: React.js, TypeScript, CSS.",
       image: automadeasy,
       previewLink: "https://www.automadeasy.com/",
     },
     {
-      id: 3,
       title: "Princess Dragon Slayer",
       description:
-        "A 2D platformer game built game built using the Godot Engine. The game includes features like character movement, collision detection, coin collection, and scoring. \n\n Technologies Used: Godot Engine, GDScript, Brackeys Platformer Bundle.",
+        "2D game (Godot Engine) with character movement, collision, coin collection & scoring. \n\nTech: Godot, GDScript, Brackeys Platformer Bundle.",
       image: princessDragonSlayer,
       previewLink: "https://github.com/anserwaseem/princess-dragon-slayer",
     },
     {
-      id: 4,
       title: "Ensemble React",
       description:
-        "Working on Ensemble React for 1.5+ years, developing a modular toolkit to integrate low-code, declarative apps into React ecosystems. \n\n Technologies Used: React.js, TypeScript, Firebase, Turborepo, pnpm.",
+        "Ensemble React (1.5+ yrs): Modular toolkit for low-code declarative apps in React ecosystems. \n\nTech: React, TS, Jotai, Turbo, Firebase, Tanstack, Antd, Jest.",
       image: ensembleReact,
       previewLink: "https://github.com/EnsembleUI/ensemble-react",
     },
     {
-      id: 5,
+      title: "Metadata from URL API",
+      description:
+        "High-performant metadata API on the edge. Global, cached, rate-limited. \n\nTech: Bun, Hono, Cloudflare Workers, Cheerio, Upstash Redis.",
+      image: urlToMetadata,
+      previewLink:
+        "https://rapidapi.com/hafizanserwaseem/api/metadata-from-url",
+    },
+    {
       title: "Personal Portfolio Website",
       description:
-        "A reliable and polished website to showcase my skills and impress potential clients or employers. \n\n Technologies Used: Next.js, React.js, Tailwind CSS.",
+        "A reliable and polished website to showcase my skills and impress potential clients or employers. \n\n Tech: Next.js, React.js, Tailwind, Shadcn UI, Motion.",
       image: anserwaseem,
       previewLink: "https://anserwaseem.com",
     },
   ],
   technologies: [
     {
-      id: 1,
       name: "html",
       src: "/skills/html.svg",
       link: "https://en.wikipedia.org/wiki/HTML",
     },
     {
-      id: 2,
       name: "css",
       src: "/skills/css.svg",
       link: "https://en.wikipedia.org/wiki/CSS",
     },
     {
-      id: 3,
       name: "javascript",
       src: "/skills/javascript.svg",
       link: "https://en.wikipedia.org/wiki/JavaScript",
     },
     {
-      id: 4,
       name: "typescript",
       src: "/skills/typescript.svg",
       link: "https://en.wikipedia.org/wiki/TypeScript",
     },
     {
-      id: 5,
       name: "react",
       src: "/skills/react.svg",
       link: "https://en.wikipedia.org/wiki/React_(JavaScript_library)",
     },
     {
-      id: 6,
       name: "tailwind",
       src: "/skills/tailwind.svg",
       link: "https://en.wikipedia.org/wiki/Tailwind_CSS",
     },
     {
-      id: 7,
       name: "nextJS",
       src: "/skills/nextJS.svg",
       link: "https://en.wikipedia.org/wiki/Next.js",
     },
     {
-      id: 8,
       name: "electronJS",
       src: "/skills/electronJS.svg",
       link: "https://en.wikipedia.org/wiki/Electron_(software_framework)",
     },
     {
-      id: 9,
       name: "vitejs",
       src: "/skills/vitejs.svg",
       link: "https://en.wikipedia.org/wiki/Vite_(software)",
     },
     {
-      id: 10,
       name: "git",
       src: "/skills/git.svg",
       link: "https://en.wikipedia.org/wiki/Git",
     },
     {
-      id: 11,
       name: "postgresql",
       src: "/skills/postgresql.svg",
       link: "https://en.wikipedia.org/wiki/PostgreSQL",
     },
     {
-      id: 12,
       name: "nodejs",
       src: "/skills/nodeJS.svg",
       link: "https://en.wikipedia.org/wiki/Node.js",
     },
     {
-      id: 13,
       name: "firebase",
       src: "/skills/firebase.svg",
       link: "https://en.wikipedia.org/wiki/Firebase",
     },
     {
-      id: 14,
       name: "markdown",
       src: "/skills/markdown.svg",
       link: "https://en.wikipedia.org/wiki/Markdown",
