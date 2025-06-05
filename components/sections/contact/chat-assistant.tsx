@@ -252,7 +252,7 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ onClose }) => {
   }, [confirmClear.timeoutId]);
 
   return (
-    <div className="flex flex-col h-full bg-muted border rounded-2xl overflow-hidden">
+    <div className="flex flex-col h-[500px] max-h-[600px] bg-muted border rounded-2xl overflow-hidden">
       <div className="flex justify-between items-center px-4 py-2 border-b bg-muted">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Bot size={18} />

@@ -23,14 +23,14 @@ const createContextFromData = () => {
       const techs = exp.technologiesUsed.join(", ");
 
       return `
-  ${exp.role} at ${exp.company} (${exp.duration})
-  Location: ${exp.location}
-  ${exp.description}
-  
-  Key Achievements:
-${achievements}
-  
-  Technologies: ${techs}`;
+        ${exp.role} at ${exp.company} (${exp.duration})
+        Location: ${exp.location}
+        ${exp.description}
+        
+        Key Achievements:
+        ${achievements}
+        
+        Technologies: ${techs}`;
     })
     .join("\n");
 
@@ -123,7 +123,7 @@ export async function POST(req: Request) {
           role: "model",
           parts: [
             {
-              text: "I understand. I'll act as Anser's AI assistant, providing detailed, confident responses about her extensive experience in AI integration, React.js development, and full-stack capabilities. I'll emphasize her practical approach and successful project implementations while maintaining professionalism and enthusiasm.",
+              text: "I understand. I'll act as Anser's AI assistant, providing detailed, confident responses about his extensive experience in AI integration, React.js development, and full-stack capabilities. I'll emphasize his practical approach and successful project implementations while maintaining professionalism and enthusiasm.",
             },
           ],
         },
