@@ -70,6 +70,68 @@ const data = {
       previewLink: "https://anserwaseem.com",
     },
   ],
+  experiences: [
+    {
+      role: "Software Engineer",
+      company: "Ensemble Technologies Inc.",
+      companyLink: "https://ensembleui.com",
+      duration: "Aug 2023 - Present",
+      location: "Remote",
+      description:
+        "Led cross-platform development initiatives for flagship low-code platform, architecting solutions across Ensemble's YAML EDL, React, and Electron ecosystems. Promoted to lead role managing complex client projects and mentoring development teams.",
+      achievements: [
+        "Promoted to lead for Atlas Health project, managing 3+ developers and delivering enterprise healthcare solutions serving 10+ health systems.",
+        "Built production-ready cross-platform applications: iOS shopping app for Tin using ensemble's EDL in YAML, complex healthcare platform for Atlas using React and ensemble-react, and desktop IDE using Electron.js.",
+        "Developed custom Keycloak authentication themes using Keycloakify and Docker, creating branded login/logout/register experiences for Atlas Health's multi-tenant healthcare platform.",
+        "Led major codebase refactoring initiative for Atlas project, establishing design system, reusable component library, and maintainable architecture patterns.",
+        "Developed comprehensive CI/CD pipeline with automated code signing, notarization for macOS/Windows, and cloud deployment system for seamless application distribution.",
+        "Architected and implemented enterprise-grade desktop application with automated update system, IPC channels, and multi-tab browser functionality.",
+        "Extended client contracts through exceptional delivery quality - One project scope expanded beyond initial timeline, Atlas workforce scaled up due to project success.",
+        "Spearheaded performance optimization initiatives across widget library, improving user experience and application responsiveness in Ensemble React.",
+      ],
+      technologiesUsed: [
+        "Firebase",
+        "React.js",
+        "TypeScript",
+        "Electron.js",
+        "Jotai",
+        "Turborepo",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "Docker",
+        "GitHub Actions",
+        "Keycloak",
+      ],
+    },
+    {
+      role: "Junior Software Developer",
+      company: "Contour Software",
+      companyLink: "https://contour-software.com/",
+      duration: "Jun 2022 - Aug 2023",
+      location: "Lahore, PK",
+      description:
+        "Architected complete frontend Identity Management System and contributed to backend development, while delivering Azure serverless data processing solutions. Led development initiatives across modern React applications, .NET 6 APIs, and comprehensive testing frameworks for enterprise security systems.",
+      achievements: [
+        "Led development and implementation of serverless orchestration Azure application for large-scale data processing, significantly improving data warehouse capabilities and analysis performance.",
+        "Architected and developed complete frontend of Identity Management System from scratch using React, TypeScript, Material UI, and RTKQ enabling end-users to independently manage users, roles, and permissions - eliminating support ticket dependency and significantly improving operational efficiency.",
+        "Developed robust backend API endpoints for Identity Management System using .NET 6 and IdentityServer4, implementing comprehensive unit testing with NUnit to ensure system reliability and security compliance.",
+        "Provided critical maintenance and support for in-house data warehouse project, ensuring data integrity, performance optimization, and adherence to enterprise security best practices.",
+      ],
+      technologiesUsed: [
+        "C#",
+        ".NET 6",
+        "IdentityServer4",
+        "React.js",
+        "TypeScript",
+        "Material UI",
+        "Redux Toolkit Query",
+        "NUnit",
+        "Azure Functions",
+        "Azure",
+      ],
+    },
+  ],
   technologies: [
     {
       name: "html",
@@ -122,6 +184,16 @@ const data = {
       link: "https://en.wikipedia.org/wiki/Git",
     },
     {
+      name: "docker",
+      src: "/skills/docker.svg",
+      link: "https://www.docker.com/",
+    },
+    {
+      name: "google genai",
+      src: "/skills/googleGenAI.webp",
+      link: "https://googleapis.github.io/js-genai/release_docs/",
+    },
+    {
       name: "postgresql",
       src: "/skills/postgresql.svg",
       link: "https://en.wikipedia.org/wiki/PostgreSQL",
@@ -132,14 +204,59 @@ const data = {
       link: "https://en.wikipedia.org/wiki/Node.js",
     },
     {
+      name: "expressjs",
+      src: "/skills/express.webp",
+      link: "https://expressjs.com/",
+    },
+    {
       name: "firebase",
       src: "/skills/firebase.svg",
       link: "https://en.wikipedia.org/wiki/Firebase",
     },
     {
+      name: "supabase",
+      src: "/skills/supabase.svg",
+      link: "https://supabase.com/",
+    },
+    {
+      name: "keycloak",
+      src: "/skills/keycloak.svg",
+      link: "https://www.keycloak.org/",
+    },
+    {
+      name: "identity server 4",
+      src: "/skills/is4.webp",
+      link: "https://identityserver4.readthedocs.io/en/latest/",
+    },
+    {
       name: "markdown",
       src: "/skills/markdown.svg",
       link: "https://en.wikipedia.org/wiki/Markdown",
+    },
+    {
+      name: "redux toolkit query",
+      src: "/skills/rtkq.svg",
+      link: "https://redux-toolkit.js.org/rtk-query/overview",
+    },
+    {
+      name: "material ui",
+      src: "/skills/mui.svg",
+      link: "https://mui.com/material-ui/",
+    },
+    {
+      name: "ant design",
+      src: "/skills/antd.svg",
+      link: "https://ant.design/",
+    },
+    {
+      name: "jotai",
+      src: "/skills/jotai.webp",
+      link: "https://jotai.org/",
+    },
+    {
+      name: "turborepo",
+      src: "/skills/turbo.webp",
+      link: "https://turborepo.com/",
     },
   ],
   contact: {
