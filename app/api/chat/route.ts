@@ -15,11 +15,33 @@ const createContextFromData = () => {
 
   const skills = data.technologies.map((s) => s.name).join(", ");
 
+  const experiences = data.experiences
+    .map((exp) => {
+      const achievements = exp.achievements
+        .map((achievement) => `    • ${achievement}`)
+        .join("\n");
+      const techs = exp.technologiesUsed.join(", ");
+
+      return `
+  ${exp.role} at ${exp.company} (${exp.duration})
+  Location: ${exp.location}
+  ${exp.description}
+  
+  Key Achievements:
+${achievements}
+  
+  Technologies: ${techs}`;
+    })
+    .join("\n");
+
   return `
     About Anser Waseem:
     - Full Stack Engineer specializing in, React.js, Next.js, Node.js, JavaScript, TypeScript, Tailwind CSS, Electron.js, Firebase, Vite, PostgreSQL, and AI Integration
     - Over 3 years of experience in web development and 1 year of experience in AI implementation
     - Email: ${data.contact.email}
+    
+    Professional Experience:
+    ${experiences}
     
     Core Expertise:
     - React and Next.js Development: Building high-performance, scalable applications

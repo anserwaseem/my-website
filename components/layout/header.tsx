@@ -1,7 +1,7 @@
 "use client";
 import useHash from "@/hooks/use-hash";
 import { cn } from "@/lib/utils";
-import { File, Home, LucideSend, User } from "lucide-react";
+import { Briefcase, File, Home, LucideSend, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import logo_mini from "@/public/imgs/logo_mini.svg";
@@ -27,6 +27,12 @@ const navItems = [
   },
   {
     id: 4,
+    name: "Experience.tsx",
+    path: "#experience",
+    icon: Briefcase,
+  },
+  {
+    id: 5,
     name: "Contact-Me.tsx",
     path: "#contact",
     icon: LucideSend,
