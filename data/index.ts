@@ -259,6 +259,10 @@ const data = {
       link: "https://turborepo.com/",
     },
   ],
+  resume: {
+    pdfUrl: "/resume/resume.pdf",
+    previewImage: "/resume/preview.webp",
+  },
   contact: {
     email: "hafiz.anser.waseem@gmail.com",
     name: "Anser Waseem",

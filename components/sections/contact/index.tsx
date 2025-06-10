@@ -7,6 +7,7 @@ import Image from "next/image";
 import logo from "@/public/imgs/logo.svg";
 import ChatAssistant from "./chat-assistant";
 import { ContactForm } from "./contact-form";
+import ResumeCard from "./resume-card";
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -29,6 +30,12 @@ export default function ContactSection() {
         Contact Me
         <span className="text-gradient-primary">{" }"}</span>
       </h1>
+
+      {/* resume section */}
+      <div className="w-full flex justify-center mb-8">
+        <ResumeCard />
+      </div>
+
       <div className="flex items-center gap-6 flex-col lg:flex-row justify-around w-full h-full">
         <div className="flex flex-col items-center gap-2 text-center min-w-[320px] w-full max-w-[450px]">
           <ChatAssistant />
