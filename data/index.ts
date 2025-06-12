@@ -29,7 +29,7 @@ const data = {
     {
       title: "Easy Accounting",
       description:
-        "Offline first accounting system (desktop app), helping SMEs to manage their finances.\n\n Tech: Electron.js, React.js, SQLite, Shadcn UI, Tailwind.",
+        "Offline first accounting system (desktop app), helping SMEs to manage their finances. Features comprehensive backup system with local file system and cloud storage via Supabase.\n\n Tech: Electron.js, React.js, SQLite, Supabase, Shadcn UI, Tailwind.",
       image: easyAccounting,
       previewLink: "https://github.com/anserwaseem/easy-accounting/",
     },
