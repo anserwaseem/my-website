@@ -69,7 +69,7 @@ export default function AboutSection() {
             , and whatever else it takes to get the job done right. <br />
             <br />
             Some people hire me to build from scratch. Others bring me in when
-            things are broken —{" "}
+            things are broken or{" "}
             <strong>
               slow apps, half-built MVPs, ChatGPT-generated code, or no-code
               experiments
@@ -97,14 +97,15 @@ export default function AboutSection() {
             <span className="font-semibold">📌 Why Work With Me?</span>
             <br />
             🔹 I focus on real results, not just code. Your web app should run
-            fast, handle traffic, and grow without breaking—I make sure it does.
+            fast, handle traffic, and grow without breaking and I make sure it
+            does.
             <br />
             🔹 I work fast and efficiently. No endless back-and-forth, no
-            unnecessary delays—just solutions that work.
+            unnecessary delays, just solutions that work.
             <br />
-            🔹 I don’t just fix problems—I prevent them. Whether optimizing an
-            existing app or building something new, I ensure it’s scalable,
-            maintainable, and built for the long run.
+            🔹 I don&apos;t just fix problems. I prevent them. Whether
+            optimizing an existing app or building something new, I ensure
+            it&apos;s scalable, maintainable, and built for the long run.
             <br />
             <br />
             <span className="font-semibold">📌 Let&apos;s Talk</span>

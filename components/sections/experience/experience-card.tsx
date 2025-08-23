@@ -20,7 +20,6 @@ export type TimelineExperienceProps = {
     achievements?: string[];
     technologiesUsed?: string[];
   };
-  isLast?: boolean;
 };
 
 export default function ExperienceCard({

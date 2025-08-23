@@ -3,6 +3,7 @@ import { useRef } from "react";
 import Image from "next/image";
 
 import ExperienceCard from "./experience-card";
+import EducationCard from "./education-card";
 import PersonAnimation from "./person-animation";
 import useCurSection from "@/hooks/use-cur-section";
 import data from "@/data";
@@ -13,6 +14,7 @@ export default function ExperienceSection() {
   useCurSection(ref, 0.1);
 
   const experiences = data.experiences || [];
+  const education = data.education;
 
   return (
     <div
@@ -79,15 +81,34 @@ export default function ExperienceSection() {
                           spotlightColor="rgba(240, 0, 0, 0.3)"
                           className="bg-[hsl(240_31%_30%/0.7)] hover:scale-[1.01] md:hover:scale-[1.02] transition-transform duration-200 border-primary/10"
                         >
-                          <ExperienceCard
-                            experience={experience}
-                            isLast={index === experiences.length - 1}
-                          />
+                          <ExperienceCard experience={experience} />
                         </SpotlightCard>
                       </div>
                     </div>
                   );
                 })}
+
+                {/* education entry */}
+                {education ? (
+                  <div className="relative group">
+                    {/* timeline dot - perfectly centered on line */}
+                    <div className="absolute left-2.5 md:left-3 top-6 md:top-8 z-30">
+                      {/* outer glow */}
+                      <div className="absolute -inset-1 w-4 h-4 md:w-5 md:h-5 bg-muted-foreground/40 rounded-full blur-sm animate-pulse group-hover:bg-muted-foreground/60 transition-colors" />
+
+                      {/* main dot with gradient */}
+                      <div className="relative w-4 h-4 md:w-5 md:h-5 bg-gradient-to-br from-muted-foreground to-muted-foreground/80 rounded-full border-[2px] border-background shadow-lg group-hover:scale-110 transition-transform">
+                        {/* inner highlight */}
+                        <div className="absolute top-0.5 left-0.5 w-1 h-1 md:w-1.5 md:h-1.5 bg-white/60 rounded-full" />
+                      </div>
+                    </div>
+
+                    {/* spotlight card content with responsive margin for timeline */}
+                    <div className="ml-9 md:ml-12">
+                      <EducationCard education={education} />
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

@@ -15,6 +15,8 @@ const createContextFromData = () => {
 
   const skills = data.technologies.map((s) => s.name).join(", ");
 
+  const education = `${data.education.degree} from ${data.education.institution} (${data.education.duration}) in ${data.education.location}`;
+
   const experiences = data.experiences
     .map((exp) => {
       const achievements = exp.achievements
@@ -39,6 +41,9 @@ const createContextFromData = () => {
     - Full Stack Engineer specializing in, React.js, Next.js, Node.js, JavaScript, TypeScript, Tailwind CSS, Electron.js, Firebase, Vite, PostgreSQL, and AI Integration
     - Over 3 years of experience in web development and 1 year of experience in AI implementation
     - Email: ${data.contact.email}
+    
+    Education:
+    - ${education}
     
     Professional Experience:
     ${experiences}

@@ -132,6 +132,13 @@ const data = {
       ],
     },
   ],
+  education: {
+    degree: "Bachelor of Science (Computer Science)",
+    institution: "FAST - NUCES",
+    location: "Lahore, PK",
+    duration: "2018 - 2022",
+    programLink: "https://www.nu.edu.pk/Program/BS(CS)",
+  },
   technologies: [
     {
       name: "html",
