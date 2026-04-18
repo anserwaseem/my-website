@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { useState } from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useState, useRef } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,55 +14,74 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: '// Username must be at least 2 characters.',
-  }),
-  email: z.string().email({ message: '// Please enter a valid email.' }),
-  message: z.string().min(1, {
-    message: '// please enter any message to submit',
-  }),
+  name: z
+    .string()
+    .min(2, {
+      message: "// Username must be at least 2 characters.",
+    })
+    .max(100),
+  email: z.string().email({ message: "// Please enter a valid email." }),
+  message: z
+    .string()
+    .min(1, {
+      message: "// please enter any message to submit",
+    })
+    .max(1000),
+  website: z.string().optional(),
 });
 
 const defaultValues: z.infer<typeof formSchema> = {
-  name: '',
-  email: '',
-  message: '',
+  name: "",
+  email: "",
+  message: "",
 };
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const captchaRef = useRef<any>(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!captchaToken) {
+      alert("Please complete the CAPTCHA.");
+      return;
+    }
+
     try {
       setIsSubmitting(true);
 
-      const response = await fetch('/api/send', {
-        method: 'POST',
+      const response = await fetch("/api/send", {
+        method: "POST",
         body: JSON.stringify({
           from_name: values.name,
           from_email: values.email,
           message: values.message,
+          captchaToken,
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        throw new Error("Failed to send email");
       }
 
       form.reset();
-      alert('Thank you for your message! I will get back to you soon.');
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
+      alert("Thank you for your message! I will get back to you soon.");
     } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Sorry, something went wrong. Please try again later.');
+      console.error("Error sending email:", error);
+      alert("Sorry, something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -69,15 +89,16 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <input type="hidden" {...form.register("website")} />
         <FormField
           control={form.control}
-          name='name'
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>_Name</FormLabel>
               <FormControl>
-                <Input placeholder='Your-Name' {...field} />
+                <Input placeholder="Your-Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -85,12 +106,12 @@ export function ContactForm() {
         />
         <FormField
           control={form.control}
-          name='email'
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>_Email</FormLabel>
               <FormControl>
-                <Input placeholder='your-email@email.com' {...field} />
+                <Input placeholder="your-email@email.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -98,14 +119,14 @@ export function ContactForm() {
         />
         <FormField
           control={form.control}
-          name='message'
+          name="message"
           render={({ field }) => (
             <FormItem>
               <FormLabel>_Message</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Let's Work Together!"
-                  className='resize-y max-h-44'
+                  className="resize-y max-h-44"
                   {...field}
                 />
               </FormControl>
@@ -113,8 +134,15 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button className='block ml-auto' type='submit' disabled={isSubmitting}>
-          {isSubmitting ? 'Sending...' : 'Submit'}
+        <div className="flex justify-center">
+          <HCaptcha
+            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
+            onVerify={setCaptchaToken}
+            ref={captchaRef}
+          />
+        </div>
+        <Button className="block ml-auto" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Submit"}
         </Button>
       </form>
     </Form>

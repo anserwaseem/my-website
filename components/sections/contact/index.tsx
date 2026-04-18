@@ -25,7 +25,7 @@ export default function ContactSection() {
         height={150}
         className="my-4"
       />
-      <h1 className="text-center text-2xl md:text-4xl  mb-12">
+      <h1 className="text-center text-2xl md:text-4xl mb-12">
         <span className="text-gradient-primary">{"{ "}</span>
         Contact Me
         <span className="text-gradient-primary">{" }"}</span>
@@ -42,7 +42,7 @@ export default function ContactSection() {
         </div>
         <motion.div
           layout
-          className="max-w-[450px] w-full min-w-[320px] h-[500px] rounded-2xl bg-muted border overflow-hidden"
+          className="max-w-[450px] w-full min-w-[320px] h-auto rounded-2xl bg-muted border overflow-hidden"
         >
           <div className="flex justify-between flex-shrink-0 px-4 pt-2">
             <div className="flex items-center gap-2 text-muted-foreground">
